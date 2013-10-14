@@ -25,5 +25,5 @@ RUN sudo -u graphite HOME=/opt/graphite PYTHONPATH=/opt/graphite/lib/ /bin/sh -c
 RUN sudo -u graphite HOME=/opt/graphite PYTHONPATH=/opt/graphite/lib/ /bin/sh -c "cd ~/webapp/graphite && ~/env/bin/python mkadmin.py"
 
 # sshd, gunicorn, collectd, carbon/plaintext, carbon/pickle, carbon/amqp
-EXPOSE 22 8080 25826/udp 2003 2004 7002
+EXPOSE 22 8080 25826/udp 2003
 CMD exec supervisord -n
