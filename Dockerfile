@@ -24,6 +24,6 @@ RUN sed -i "s#^\(SECRET_KEY = \).*#\1\"`python -c 'import os; import base64; pri
 RUN sudo -u graphite HOME=/opt/graphite PYTHONPATH=/opt/graphite/lib/ /bin/sh -c "cd ~/webapp/graphite && ~/env/bin/python manage.py syncdb --noinput"
 RUN sudo -u graphite HOME=/opt/graphite PYTHONPATH=/opt/graphite/lib/ /bin/sh -c "cd ~/webapp/graphite && ~/env/bin/python mkadmin.py"
 
-# sshd, gunicorn, collectd, carbon/plaintext, carbon/pickle, carbon/amqp
-EXPOSE 22 8080 25826/udp 2003
+# sshd, gunicorn, collectd, carbon/plaintext
+EXPOSE 22 5555:8080 5556:25826/udp 5557:2003
 CMD exec supervisord -n
